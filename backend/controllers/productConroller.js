@@ -35,9 +35,20 @@ exports.getProoductDetails = cathcAsyncErrors(async (req, res, next) => {
 });
 
 // Updating Product
-exports.updateProduct =cathcAsyncErrors(async(req,res,next)=>{
+exports.updateProduct = cathcAsyncErrors(async (req, res, next) => {
+  let product = await Product.findById(req.params.id);
+  if (!product) {
+    return next(new ErrorHandler("Product not found", 404));
+  }
+
+  product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
   res.status(200).json({
-    success:true,
-    message:"Hi am workin"
-  })
-})
+    success: true,
+    message: "Hi Dude Thanks working  Updating ",
+    product
+  });
+});
