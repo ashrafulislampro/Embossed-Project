@@ -76,12 +76,33 @@ exports.getAllUsers = catchAsyncErrors(async (req, res, next) => {
     user,
   });
 });
-
 // Get User Details
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findById(req.params.id);
   res.status(200).json({
     success: true,
     user,
+  });
+});
+
+// Update User Profile
+
+exports.updateUserProfile = catchAsyncErrors(async (req, res, next) => {
+  let newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+    role: req.body.role,
+  };
+
+  const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
+
+  res.status(200).json({
+    user,
+    success: true,
+    message: "User Updated Successfully",
   });
 });
