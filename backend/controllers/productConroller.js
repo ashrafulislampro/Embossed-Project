@@ -22,3 +22,8 @@ exports.createProduct = async (req, res) => {
     console.log(error);
   }
 };
+
+
+exports.getProoductDetails=async(req,res)=>{
+  
+}
