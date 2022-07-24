@@ -6,9 +6,8 @@ const cookieParser = require("cookie-parser");
 const users = require("./routes/userRoutes");
 // Midleware
 if (process.env.NODE_ENV !== "PRODUCTION") {
-  require("dotenv").config({ path: "backend/config/config.env" });
+  require("dotenv").config({ path: "/.env" });
 }
-
 app.use(express.json());
 app.use(cookieParser());
 // Database Connection

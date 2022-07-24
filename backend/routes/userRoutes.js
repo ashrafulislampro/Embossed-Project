@@ -6,17 +6,25 @@ const {
   getAllUsers,
   getUserDetails,
   updateUserProfile,
+  deleteUsers,
 } = require("../controllers/userController");
+const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 
 const router = express.Router();
 
 router.route("/register").post(registerUser);
 router.route("/login").post(loginUser);
-router.route("/logout").post(logout);
+router.route("/logout").get(logout);
 
 // Users routes
 
-router.route("/admin/users").get(getAllUsers);
-router.route("/admin/users/:id").get(getUserDetails).put(updateUserProfile);
+router
+  .route("/admin/users")
+  .get(isAuthenticatedUser, authorizeRoles("admin"), getAllUsers);
+router
+  .route("/admin/users/:id")
+  .get(getUserDetails)
+  .put(updateUserProfile)
+  .delete(deleteUsers);
 
 module.exports = router;

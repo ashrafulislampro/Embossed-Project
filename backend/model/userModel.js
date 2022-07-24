@@ -56,7 +56,7 @@ userSchema.pre("save", async function (next) {
 
 // JWT TOKEN
 userSchema.methods.getJWTToken = function () {
-  return jwt.sign({ id: this._id }, NAIMUR, {
+  return jwt.sign({ id: this._id }, JWT_SECRET, {
     expiresIn:5,
   });
 };

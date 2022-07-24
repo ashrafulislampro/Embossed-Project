@@ -64,6 +64,7 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+
     message: "Logged Out",
   });
 });
@@ -79,6 +80,11 @@ exports.getAllUsers = catchAsyncErrors(async (req, res, next) => {
 // Get User Details
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findById(req.params.id);
+  if (!user) {
+    return next(
+      new ErrorHander(`User does not exist with Id: ${req.params.id}`)
+    );
+  }
   res.status(200).json({
     success: true,
     user,
@@ -93,16 +99,38 @@ exports.updateUserProfile = catchAsyncErrors(async (req, res, next) => {
     email: req.body.email,
     role: req.body.role,
   };
-
   const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
     new: true,
     runValidators: true,
     useFindAndModify: false,
   });
-
+  if (!user) {
+    return next(
+      new ErrorHander(`User does not exist with Id: ${req.params.id}`)
+    );
+  }
   res.status(200).json({
     user,
     success: true,
     message: "User Updated Successfully",
+  });
+});
+
+// Delete Users
+
+exports.deleteUsers = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    return next(
+      new ErrorHander(`User does not exist with Id: ${req.params.id}`, 400)
+    );
+  }
+
+  await user.remove();
+
+  res.status(200).json({
+    success: true,
+    message: "user Deleted Successfully",
   });
 });
