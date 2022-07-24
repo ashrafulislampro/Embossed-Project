@@ -25,4 +25,7 @@
 <li>Node.js</li>
 <li>MongoDB</li>
 <li>Express.js</li>
+<li>Mongoose</li>
+<li>JWT</li>
+<li>Nodemailer</li>
 </ul>
