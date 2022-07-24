@@ -2,10 +2,9 @@
 
 ### [Project Live link:] https://embossed-e-commerce.web.app/
 
-## Usable Technology
+## Usable Technology FrontEnd
 
-### FrontEnd
-
+<div>
 <ul>
 <li>React.js</li>
 <li>Tailwind CSS</li>
@@ -18,11 +17,24 @@
 <li>Firebase Authentication</li>
 <li>React Router Dom V6</li>
 </ul>
+</div>
 
-### BackEnd (at running using this technology)
+### BackEnd Dependency
 
+<div>
 <ul>
 <li>Node.js</li>
 <li>MongoDB</li>
 <li>Express.js</li>
+<li>Bcryptjs</li>
+<li>Cookie-parser</li>
+<li>Cors</li>
+<li>Crypto</li>
+<li>Dotenv</li>
+<li>Jsonwebtoken</li>
+<li>Mongoose</li>
+<li>Validator</li>
+<li>Body-parser</li>
+<li>Nodemailer.js</li>
 </ul>
+</div>
