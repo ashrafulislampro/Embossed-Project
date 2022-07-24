@@ -6,7 +6,6 @@ const products = require("./routes/productRoutes");
 app.use(express.json());
 // Database Connection
 connectDb();
-
 // Routes
 app.use("/api/v1", products);
 
