@@ -2,9 +2,10 @@
 
 ### [Project Live link:] https://embossed-e-commerce.web.app/
 
-## Usable Technology FrontEnd
+## Usable Technology
 
 <div>
+<h2>Frontend Technology</h2>
 <ul>
 <li>React.js</li>
 <li>Tailwind CSS</li>
@@ -22,6 +23,7 @@
 ### BackEnd Dependency
 
 <div>
+<h2>Frontend Technology</h2>
 <ul>
 <li>Node.js</li>
 <li>MongoDB</li>
