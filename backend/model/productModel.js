@@ -6,6 +6,10 @@ const productSchema = mongoose.Schema({
     required: [true, "Please Enter the Product Name"],
     trim: true,
   },
+  title: {
+    type: String,
+    required: [true, "Please Enter the Title"],
+  },
   description: {
     type: String,
     required: [true, "Please Enter the Product Description"],
@@ -14,9 +18,9 @@ const productSchema = mongoose.Schema({
     type: String,
     required: [true, "please Enter the Brand name"],
   },
-  Availability: {
-    type: String,
-    required: [true, "Please Enter the Availablity"],
+  stock: {
+    type: Number,
+    required: [true, "Please Enter the Stock"],
   },
   price: {
     type: Number,
