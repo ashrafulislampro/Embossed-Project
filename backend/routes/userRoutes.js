@@ -4,6 +4,7 @@ const {
   loginUser,
   logout,
   getAllUsers,
+  getUserDetails,
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -15,5 +16,6 @@ router.route("/logout").post(logout);
 // Users routes
 
 router.route("/admin/users").get(getAllUsers);
+router.route("/admin/users/:id").get(getUserDetails);
 
 module.exports = router;
