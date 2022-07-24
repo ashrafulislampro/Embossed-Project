@@ -6,7 +6,6 @@ const crypto = require("crypto");
 
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-
   const { name, email, password } = req.body;
 
   const user = await User.create({
@@ -19,12 +18,12 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     },
   });
 
-    res.status(201).json({
-      success:true,
-      user,
-      
-    })
+  res.status(201).json({
+    success: true,
+    user,
+  });
   sendToken(user, 201, res);
+  NAIMUR;
 });
 
 // Login User
@@ -48,7 +47,11 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
   if (!isPasswordMatched) {
     return next(new ErrorHander("Invalid email or password", 401));
   }
-
+  res.status(200).json({
+    success: true,
+    message: "LogedIn Succesfully",
+    user,
+  });
   sendToken(user, 200, res);
 });
 
