@@ -5,7 +5,7 @@ const sendToken = require("../utils/jwtToken");
 const crypto = require("crypto");
 // Registar Users
 
-const registerUser = catchAsyncErrors(async (req, res, next) => {
+exports.registerUser = catchAsyncErrors(async (req, res, next) => {
   const { name, email, password } = req.body;
   const user = await User.create({
     name,
@@ -21,7 +21,7 @@ const registerUser = catchAsyncErrors(async (req, res, next) => {
 
 // Login
 
-const loginUser = catchAsyncErrors(async (req, res, next) => {
+exports.loginUser = catchAsyncErrors(async (req, res, next) => {
   const { email, password } = req.body;
   //   Checking if User  has given  password and email login
 
@@ -46,7 +46,7 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
 
 // Logout Users
 
-const logout = catchAsyncErrors(async (req, res, next) => {
+exports.logout = catchAsyncErrors(async (req, res, next) => {
   res.cookie("token", null, {
     expires: new Date(Date.now()),
     httpOnly: true,
