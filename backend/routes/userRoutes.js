@@ -18,9 +18,7 @@ router.route("/logout").get(logout);
 
 // Users routes
 
-router
-  .route("/admin/users")
-  .get(isAuthenticatedUser, authorizeRoles("admin"), getAllUsers);
+router.route("/admin/users").get(getAllUsers);
 router
   .route("/admin/users/:id")
   .get(getUserDetails)
