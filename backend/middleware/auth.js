@@ -1,6 +1,6 @@
-const ErrorHander = require("../utils/errorhander");
-const catchAsyncErrors = require("../middleware/cathcAsyncErrors");
-const jwt = require("jsonwebtoken");
+const catchAsyncErrors = require("./cathcAsyncErrors");
+const ErrorHander = require('../utils/errorhander')
+const jwt = require('jsonwebtoken');
 const User = require("../model/userModel");
 
 exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
@@ -16,17 +16,14 @@ exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
 
   next();
 });
+
+
 exports.authorizeRoles = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
-      return next(
-        new ErrorHander(
-          `Role: ${req.user.role} is not allowed to access this resouce `,
-          403
-        )
-      );
-    }
+      return next(  new ErrorHander(`Roles: ${req.user.role} is not allowed to access this resources`, 403))
+    };
 
-    next();
-  };
-};
+    next()
+  }
+}
